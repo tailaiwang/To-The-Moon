@@ -5,6 +5,7 @@ from . import app, schedular, client
 from flask import request
 from werkzeug.urls import url_parse
 from datetime import datetime
+import requests
 import json
 import os
 import re
@@ -37,6 +38,12 @@ def titles():
 
     return jsonify(retval)
 
+@app.route("/live", methods=["GET"]) # return live DB
+def live():
+  headers = { 'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
+  r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
+  return r.text
+
 
 def runManualWebScrape():
   print("---------------------------")
@@ -67,7 +74,7 @@ def calcRating(title, description, score, comments, flairs, awards, count):
   totalSenti = 3 * titleSenti + 2 * descSenti + commentsSenti
 
   # find the number of rocket ships inside the comments, title, desc
-  rocketShipCount = 0.10 * len(re.findall(ru'🚀', title + description + comments))
+  # rocketShipCount = 0.10 * len(re.findall(ru'🚀', title + description + comments))
   # finds the number of YOLOs, each YOLO is +5
   yoloCount = flairs.count("YOLO")
 

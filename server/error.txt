@@ -1,7 +1,0 @@
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 214-144-444
-127.0.0.1 - - [16/Jan/2021 12:34:48] "[37mGET / HTTP/1.1[0m" 200 -
-127.0.0.1 - - [16/Jan/2021 12:58:55] "[37mGET /scrape HTTP/1.1[0m" 200 -
-127.0.0.1 - - [16/Jan/2021 13:00:11] "[37mGET / HTTP/1.1[0m" 200 -

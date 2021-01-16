@@ -3335,166 +3335,61 @@ def getCommentConcatenated(submission):
   return commentConcatenated
 
 
-
-
-
-for submission in subreddit.controversial(limit=10000):
-  target = re.compile('[$][A-Za-z][\S]*')
+def getResultsToJSON():
   result = {}
-  if re.match(target, submission.title):
-      #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
-      candidate = target.search(submission.title).group()
-      candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
-      if candidateWithDollarSign in tickerSet:
-       #definitely a post that has ticker
-        stockTicker = candidateWithDollarSign
-        title = submission.title
-        selfText = submission.selftext
-        score = submission.score
-        comments = getCommentConcatenated(submission)
-        linkFlairText = submission.link_flair_text
-        totalAwardsReceived = submission.total_awards_received
+  def addSubmissionResults(submission):
+    target = re.compile('[$][A-Za-z][\S]*')
+    if re.match(target, submission.title):
+        #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
+        candidate = target.search(submission.title).group()
+        candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
+        if candidateWithDollarSign in tickerSet:
+        #definitely a post that has ticker
+          stockTicker = candidateWithDollarSign
+          title = submission.title
+          selfText = submission.selftext
+          score = submission.score
+          comments = getCommentConcatenated(submission)
+          linkFlairText = submission.link_flair_text
+          totalAwardsReceived = submission.total_awards_received
 
 
-        result = {
-          "stockTicker":stockTicker,
-          "title": title,
-          "selfText": selfText,
-          "score": score,
-          "comment": comments,
-          "linkFlairText": linkFlairText,
-          "totalAwardsReceived": totalAwardsReceived
-        }
-        results.append(result)
+          result = {
+            "stockTicker":stockTicker,
+            "title": title,
+            "selfText": selfText,
+            "score": score,
+            "comment": comments,
+            "linkFlairText": linkFlairText,
+            "totalAwardsReceived": totalAwardsReceived
+          }
+          results.append(result)
+          print(result)
 
+  for submission in subreddit.controversial(limit=10000):
+    addSubmissionResults(submission)
 
+  # for submission in subreddit.hot(limit=10000):
+  #   addSubmissionResults(submission)
 
-for submission in subreddit.hot(limit=10000):
-  target = re.compile('[$][A-Za-z][\S]*')
-  result = {}
-  if re.match(target, submission.title):
-      #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
-      candidate = target.search(submission.title).group()
-      candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
-      if candidateWithDollarSign in tickerSet:
-       #definitely a post that has ticker
-        stockTicker = candidateWithDollarSign
-        title = submission.title
-        selfText = submission.selftext
-        score = submission.score
-        comments = getCommentConcatenated(submission)
-        linkFlairText = submission.link_flair_text
-        totalAwardsReceived = submission.total_awards_received
+  # for submission in subreddit.new(limit=10000):
+  #   addSubmissionResults(submission)
 
+  # for submission in subreddit.rising(limit=10000):
+  #   addSubmissionResults(submission)
+          
+  # for submission in subreddit.top(limit=10000):
+  #   addSubmissionResults(submission)
 
-        result = {
-          "stockTicker":stockTicker,
-          "title": title,
-          "selfText": selfText,
-          "score": score,
-          "comment": comments,
-          "linkFlairText": linkFlairText,
-          "totalAwardsReceived": totalAwardsReceived
-        }
-        results.append(result)
+  print(len(results))
+
+  with open("sample.json", "w") as outfile:  
+      json.dump(results, outfile) 
 
 
 
-for submission in subreddit.new(limit=10000):
-  target = re.compile('[$][A-Za-z][\S]*')
-  result = {}
-  if re.match(target, submission.title):
-      #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
-      candidate = target.search(submission.title).group()
-      candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
-      if candidateWithDollarSign in tickerSet:
-       #definitely a post that has ticker
-        stockTicker = candidateWithDollarSign
-        title = submission.title
-        selfText = submission.selftext
-        score = submission.score
-        comments = getCommentConcatenated(submission)
-        linkFlairText = submission.link_flair_text
-        totalAwardsReceived = submission.total_awards_received
 
-
-        result = {
-          "stockTicker":stockTicker,
-          "title": title,
-          "selfText": selfText,
-          "score": score,
-          "comment": comments,
-          "linkFlairText": linkFlairText,
-          "totalAwardsReceived": totalAwardsReceived
-        }
-        results.append(result)
-
-for submission in subreddit.rising(limit=10000):
-  target = re.compile('[$][A-Za-z][\S]*')
-  result = {}
-  if re.match(target, submission.title):
-      #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
-      candidate = target.search(submission.title).group()
-      candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
-      if candidateWithDollarSign in tickerSet:
-       #definitely a post that has ticker
-        stockTicker = candidateWithDollarSign
-        title = submission.title
-        selfText = submission.selftext
-        score = submission.score
-        comments = getCommentConcatenated(submission)
-        linkFlairText = submission.link_flair_text
-        totalAwardsReceived = submission.total_awards_received
-
-
-        result = {
-          "stockTicker":stockTicker,
-          "title": title,
-          "selfText": selfText,
-          "score": score,
-          "comment": comments,
-          "linkFlairText": linkFlairText,
-          "totalAwardsReceived": totalAwardsReceived
-        }
-        results.append(result)
-        
-
-for submission in subreddit.top(limit=10000):
-  target = re.compile('[$][A-Za-z][\S]*')
-  result = {}
-  if re.match(target, submission.title):
-      #could be a post that has a ticker (does this first to elimate unnecessary checks in set)
-      candidate = target.search(submission.title).group()
-      candidateWithDollarSign = candidate[1:] #the detected stock ticker without $
-      if candidateWithDollarSign in tickerSet:
-       #definitely a post that has ticker
-        stockTicker = candidateWithDollarSign
-        title = submission.title
-        selfText = submission.selftext
-        score = submission.score
-        comments = getCommentConcatenated(submission)
-        linkFlairText = submission.link_flair_text
-        totalAwardsReceived = submission.total_awards_received
-
-
-        result = {
-          "stockTicker":stockTicker,
-          "title": title,
-          "selfText": selfText,
-          "score": score,
-          "comment": comments,
-          "linkFlairText": linkFlairText,
-          "totalAwardsReceived": totalAwardsReceived
-        }
-        results.append(result)
-
-
-print(len(results))
-
-
-with open("sample.json", "w") as outfile:  
-    json.dump(results, outfile) 
-
+getResultsToJSON()
 
 
     

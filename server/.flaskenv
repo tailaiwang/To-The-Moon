@@ -1,3 +1,0 @@
-FLASK_APP=server.py
-FLASK_ENV=development
-GOOGLE_APPLICATION_CREDENTIALS=~/Projects/SwingSentiment/server/private/SwingSentiment-ea669d1c1662.json

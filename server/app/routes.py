@@ -28,3 +28,5 @@ def runManualWebScrape():
 def manualScrape():
   schedular.add_job(func = runManualWebScrape, trigger = 'date', id = 'webScrapeManual')
   return "Added manual scraping to job...results will be updated in approx 5 minutes"
+
+

@@ -4,6 +4,7 @@ from . import app, schedular
 from flask import request
 from werkzeug.urls import url_parse
 from datetime import datetime
+import requests
 import json
 import os
 from flask import jsonify
@@ -32,6 +33,13 @@ def titles():
       retval.append(item)
 
     return jsonify(retval)
+
+@app.route("/live", methods=["GET"]) # return live DB
+def live():
+  headers = { 'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
+  r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
+  return r.text
+
 
 def runManualWebScrape():
   print("---------------------------")

@@ -3,6 +3,7 @@ import pandas as pd
 import datetime as dt
 from praw.models import MoreComments
 from praw.reddit import Subreddit
+import requests
 import re
 import json
 import csv
@@ -30,7 +31,7 @@ def getCommentConcatenated(submission):
     return commentConcatenated
 
 
-def webScrapeToJSON():
+def webScrapeToJSONAndPush():
 
     print("Connecting to Reddit API...")
 
@@ -96,29 +97,41 @@ def webScrapeToJSON():
                 }
                 results.append(result)
 
+
+
+
+
     print("Scraping from controversial...")
     for submission in subreddit.controversial(limit=10000):
         addSubmissionResults(submission)
     print("Done!")
-    # print("Scraping from hot...")
-    # for submission in subreddit.hot(limit=10000):
-    #     addSubmissionResults(submission)
-    # print("Done!")
-    # print("Scraping from new...")
-    # for submission in subreddit.new(limit=10000):
-    #     addSubmissionResults(submission)
-    # print("Done!")
-    # print("Scraping from rising...")
-    # for submission in subreddit.rising(limit=10000):
-    #     addSubmissionResults(submission)
-    # print("Done!")
-    # print("Scraping from top...")
-    # for submission in subreddit.top(limit=10000):
-    #     addSubmissionResults(submission)
-    # print("Done!")
+    print("Scraping from hot...")
+    for submission in subreddit.hot(limit=10000):
+        addSubmissionResults(submission)
+    print("Done!")
+    print("Scraping from new...")
+    for submission in subreddit.new(limit=10000):
+        addSubmissionResults(submission)
+    print("Done!")
+    print("Scraping from rising...")
+    for submission in subreddit.rising(limit=10000):
+        addSubmissionResults(submission)
+    print("Done!")
+    print("Scraping from top...")
+    for submission in subreddit.top(limit=10000):
+        addSubmissionResults(submission)
+    print("Done!")
     print("Saving results to JSON")
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, 'scrapeResults.json')
     with open(full_path, "w") as outfile:
         json.dump(results, outfile)
+
+    
+
+
+    
+
+
+
     print("Bye bye!")

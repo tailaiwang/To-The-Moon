@@ -142,3 +142,8 @@ cython_debug/
 
 #flask env
 .flaskenv
+
+
+#logging
+error.txt
+log.txt

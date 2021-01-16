@@ -1,0 +1,12 @@
+.nav-container {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+
+    background: solid;
+    background-color: #EDF2F4;
+    border-radius: 10px;
+
+    height: 700px;
+    width: 250px;
+}

@@ -4,7 +4,7 @@
 
 2.  Create a virtual environment by doing ```python3 -m venv venv```
 
-3.  Start the virtual environment by doing  ```source ./venv/bin/activate```
+3.  Start the virtual environment
 
 4.  Install all the dependencies by doing ```pip install -r requirements.txt```
 

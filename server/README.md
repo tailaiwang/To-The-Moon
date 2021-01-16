@@ -11,7 +11,7 @@
 5.  Create a directory named "private" in the root of server directory and place the Google Natural Language json api key in there
 
 6.  duplicate .flaskenv.temp to another file named .flaskenv, change GOOGLE_APPLICATION_CREDENTIALS to your system pathway to that Google Natural Language json api key json 
-
+    fill in the empties with the secrets hehe
 
 
 # Starting up flask backend server

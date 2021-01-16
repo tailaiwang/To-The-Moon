@@ -136,3 +136,12 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+
+
+#private key
+/private
+
+#flask env
+.flaskenv

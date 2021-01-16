@@ -1,0 +1,39 @@
+ * Serving Flask app "server.py" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+---------------------------
+Running automatic webscrape
+---------------------------
+Connecting to Reddit API...
+Connected!
+Loading set of valid tickers from CSV...
+Loaded!
+Currently targetting: r\wallstreetbets
+Scraping from controversial...
+Done!
+Saving results to JSON
+Bye bye!
+---------------------------
+Running manual webscrape
+---------------------------
+Connecting to Reddit API...
+Connected!
+Loading set of valid tickers from CSV...
+Loaded!
+Currently targetting: r\wallstreetbets
+Scraping from controversial...
+Done!
+Saving results to JSON
+Bye bye!
+---------------------------
+Running automatic webscrape
+---------------------------
+Connecting to Reddit API...
+Connected!
+Loading set of valid tickers from CSV...
+Loaded!
+Currently targetting: r\wallstreetbets
+Scraping from controversial...
+Done!
+Saving results to JSON
+Bye bye!

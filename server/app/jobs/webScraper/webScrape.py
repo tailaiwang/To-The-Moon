@@ -82,8 +82,10 @@ def webScrapeToJSON():
                 comments = getCommentConcatenated(submission)
                 linkFlairText = submission.link_flair_text
                 totalAwardsReceived = submission.total_awards_received
+                id = submission.id
 
                 result = {
+                    "id": id,
                     "stockTicker": stockTicker,
                     "title": title,
                     "selfText": selfText,
@@ -98,23 +100,25 @@ def webScrapeToJSON():
     for submission in subreddit.controversial(limit=10000):
         addSubmissionResults(submission)
     print("Done!")
-    print("Scraping from hot...")
-    for submission in subreddit.hot(limit=10000):
-        addSubmissionResults(submission)
-    print("Done!")
-    print("Scraping from new...")
-    for submission in subreddit.new(limit=10000):
-        addSubmissionResults(submission)
-    print("Done!")
-    print("Scraping from rising...")
-    for submission in subreddit.rising(limit=10000):
-        addSubmissionResults(submission)
-    print("Done!")
-    print("Scraping from top...")
-    for submission in subreddit.top(limit=10000):
-        addSubmissionResults(submission)
-    print("Done!")
+    # print("Scraping from hot...")
+    # for submission in subreddit.hot(limit=10000):
+    #     addSubmissionResults(submission)
+    # print("Done!")
+    # print("Scraping from new...")
+    # for submission in subreddit.new(limit=10000):
+    #     addSubmissionResults(submission)
+    # print("Done!")
+    # print("Scraping from rising...")
+    # for submission in subreddit.rising(limit=10000):
+    #     addSubmissionResults(submission)
+    # print("Done!")
+    # print("Scraping from top...")
+    # for submission in subreddit.top(limit=10000):
+    #     addSubmissionResults(submission)
+    # print("Done!")
     print("Saving results to JSON")
-    with open('scrapeResults.json', "w") as outfile:
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, 'scrapeResults.json')
+    with open(full_path, "w") as outfile:
         json.dump(results, outfile)
     print("Bye bye!")

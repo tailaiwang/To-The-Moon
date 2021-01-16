@@ -1,0 +1,53 @@
+.nav-div {
+    position: absolute;
+    height: 120px;
+    width: 100vw;
+    top: 0%;
+
+    background: solid;
+    background-color: #8D99AE;
+}
+
+.logo {
+    position: absolute;
+    height: 200px;
+    width: 400px;
+}
+
+.logo-img {
+    position: absolute;
+    top: -25%;
+    left: 20%;
+    
+    height: 250px;
+    width: auto;
+}
+
+
+
+textarea, input { outline: none; }
+
+.search-input {
+    position: absolute;
+    top: 27%;
+    left: 33%;
+
+    width: 700px;
+    height: 60px;
+
+    border-radius: 40px;
+    border: none;
+
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 35px;
+    text-align: center;
+    color: #52B788;
+}
+
+.ghost-button {
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    background: none;
+    border: none;
+}

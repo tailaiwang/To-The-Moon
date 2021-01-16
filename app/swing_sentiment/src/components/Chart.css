@@ -1,0 +1,13 @@
+.chart-container {
+    position: absolute;
+    top: 20%;
+    left: 27%;
+
+    height: 700px;
+    width: 1300px;
+    border-radius: 15px;
+
+    background: solid;
+    background-color: #EDF2F4;
+
+}

@@ -7,10 +7,9 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 import json
 import os
+import re
 from flask import jsonify
 from .jobs.webScraper import webScrapeToJSONAndPush
-
-
 
 
 @app.route("/")
@@ -20,6 +19,7 @@ def index():
   with open(full_path) as f:
     data = json.load(f)
     return jsonify(data)
+
 
 @app.route("/tickers/") # return unique tickers
 def titles():
@@ -37,6 +37,7 @@ def titles():
 
     return jsonify(retval)
 
+
 def runManualWebScrape():
   print("---------------------------")
   print("Running manual webscrape")
@@ -50,16 +51,28 @@ def manualScrape():
   return "Added manual scraping to job...results will be updated in approx 5 minutes"
 
 
-
 def getSentiment(text):
-
   document = language_v1.Document(content=text, type_=language_v1.Document.Type.PLAIN_TEXT)
 
   # Detects the sentiment of the text
   sentiment = client.analyze_sentiment(request={'document': document}).document_sentiment
-  return("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+  return sentiment.score
 
+# Calculates the average rating per stock ticker based on WSB
+def calcRating(title, description, score, comments, flairs, awards, count):
+  rating = 0
+  titleSenti = getSentiment(title)
+  descSenti = getSentiment(description)
+  commentsSenti = getSentiment(comments)
+  totalSenti = 3 * titleSenti + 2 * descSenti + commentsSenti
 
+  # find the number of rocket ships inside the comments, title, desc
+  rocketShipCount = 0.10 * len(re.findall(ru'🚀', title + description + comments))
+  # finds the number of YOLOs, each YOLO is +5
+  yoloCount = flairs.count("YOLO")
+
+  rating = (totalSenti * (score + awards) + rocketShipCount + yoloCount ) / count
+  return rating
 
 @app.route("/ratings")
 def getAllRatings():

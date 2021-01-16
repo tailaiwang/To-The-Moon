@@ -1,5 +1,5 @@
 
 
-from .webScrape import webScrapeToJSON
+from .webScrape import webScrapeToJSONAndPush
 
 

@@ -62,9 +62,31 @@ def getSentiment(text):
 
 
 @app.route("/ratings")
-
+def getAllRatings():
+  ratings= []
+  #replace with API call later
+  script_dir = os.path.dirname(__file__)
+  full_path = os.path.join(script_dir, 'jobs/webScraper/poggedResults.json')
+  with open(full_path) as f:
+    data = json.load(f)
+    for stock in data:
+      ratings.append(
+        {
+          "ticker": stock["ticker"],
+        }
+      )
+  return ratings.__str__()
+    
 
 @app.route("/ratings/<stockTicker>")
-
+def getRatingDetail(stockTicker):
+  #replace with API call later
+  script_dir = os.path.dirname(__file__)
+  full_path = os.path.join(script_dir, 'jobs/webScraper/poggedResults.json')
+  with open(full_path) as f:
+    data = json.load(f)
+    if filter(lambda stock : stock["ticker"] == stockTicker, data):
+      return list(filter(lambda stock : stock["ticker"] == stockTicker, data))[0].__str__()
+  return "Stock not found", 400
 
 

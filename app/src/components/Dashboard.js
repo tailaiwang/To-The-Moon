@@ -15,7 +15,7 @@ const Dashboard = ({
     setTicker,
     ticker,
 }) => {
-    if (currentDashboard === 0) {
+    if (currentDashboard === 0) { // main dashboard
         return (
             <div>
                 <BullList
@@ -27,7 +27,7 @@ const Dashboard = ({
                 <PieChart />
             </div>
         );
-    } else if (currentDashboard === 1) {
+    } else if (currentDashboard === 1) { // individual ticker
         return (
             <div>
                 <div className="current-ticker">
@@ -37,10 +37,14 @@ const Dashboard = ({
                     </div>
                 </div>
                 <SideNav
-                    currentDashboard={currentDashboard}
-                    setCurrentDashboard={setCurrentDashboard}
+                    rating={rating}
+                    popularity={popularity}
+                    rocketships={rocketships}
+                    yolos={yolos}
                 />
-                <Comments />
+                <Comments
+                    comments={comments}
+                />
             </div>
         );
     }

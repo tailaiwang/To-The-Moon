@@ -38,7 +38,6 @@ const Search = ({
                 <i className="fas fa-chart-line logo-img"></i>
                 <div className="title">To The Moon 🚀</div>
             </div>
-
             <form>
                 <input
                     type="text"
@@ -47,7 +46,6 @@ const Search = ({
                     onChange={searchHandler}
                     className="search-input"
                 />
-
                 <button className="ghost-button" onClick={submitHandler}></button>
             </form>
         </div>

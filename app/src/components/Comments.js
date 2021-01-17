@@ -1,14 +1,12 @@
 import React from 'react';
 
-// chart library imports
-
 // css
 import './Comments.css';
 
-const Comments = () => {
+const Comments = ({ comments }) => {
     return (
         <div className="comments-container">
-            this is where the comments go
+            {comments}
         </div>
     );
 }

@@ -10,3 +10,20 @@
     height: 700px;
     width: 250px;
 }
+
+.nav-list {
+    position: absolute;
+    left: 17%;
+}
+
+.nav-list div:nth-child(1) {
+    margin-top: 50px;
+}
+
+.nav-list div:nth-child(2) {
+    margin-top: 60px;
+}
+
+.nav-list div:nth-child(3) {
+    margin-top: 60px;
+}

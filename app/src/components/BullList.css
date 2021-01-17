@@ -1,0 +1,12 @@
+.bull-list-container {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+
+    height: 700px;
+    width: 800px;
+
+    background: solid;
+    background-color: #EDF2F4;
+    border-radius: 20px;
+}

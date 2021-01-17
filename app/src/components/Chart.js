@@ -15,7 +15,7 @@ const Chart = ({ ticker }) => {
             {
                 label: ticker,
                 data: [1, 2, 3, 5, 0, 10, 15, 7],
-                borderColor: ['rgba(0, 128, 0, 1)'],
+                borderColor: ['#52B788'],
                 backgroundColor: ['rgba(66, 188, 66, 0)'],
                 pointBackgroundColor: 'black',
                 pointbordercolor: 'black'

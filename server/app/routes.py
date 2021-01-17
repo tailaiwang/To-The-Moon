@@ -11,38 +11,47 @@ import os
 import re
 from flask import jsonify
 from .jobs.webScraper import webScrapeToJSONAndPush
+from flask import jsonify
+
+
+def newEncoder(o):
+    if type(o) == ObjectId:
+        return str(o)
+    return o.__str__
 
 
 @app.route("/api")
 def index():
-  script_dir = os.path.dirname(__file__)
-  full_path = os.path.join(script_dir, 'jobs/webScraper/scrapeResults.json')
-  with open(full_path) as f:
-    data = json.load(f)
-    return jsonify(data)
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, 'jobs/webScraper/scrapeResults.json')
+    with open(full_path) as f:
+        data = json.load(f)
+        return jsonify(data)
 
 
-@app.route("/api/tickers", methods=["GET"]) # return unique tickers
+@app.route("/api/tickers", methods=["GET"])  # return unique tickers
 def titles():
-  script_dir = os.path.dirname(__file__)
-  full_path = os.path.join(script_dir, 'jobs/webScraper/scrapeResults.json')
-  with open(full_path) as f:
-    data = json.load(f)
-    tickerSet = set()
-    for line in data:
-      tickerSet.add(line['stockTicker'])
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, 'jobs/webScraper/scrapeResults.json')
+    with open(full_path) as f:
+        data = json.load(f)
+        tickerSet = set()
+        for line in data:
+            tickerSet.add(line['stockTicker'])
 
-    retval = []
-    for item in tickerSet:
-      retval.append(item)
+        retval = []
+        for item in tickerSet:
+            retval.append(item)
 
-    return jsonify(retval)
+        return jsonify(retval)
 
-@app.route("/api/live", methods=["GET"]) # return live DB
+
+@app.route("/api/live", methods=["GET"])  # return live DB
 def live():
-  headers = { 'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
-  r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
-  return r.text
+    headers = {'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
+    r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
+    return r.text
+
 
 def runAutomaticWebScrape():
     print("---------------------------")
@@ -50,7 +59,8 @@ def runAutomaticWebScrape():
     print("---------------------------")
     webScrapeToJSONAndPush()
 
-#add automatic task
+
+# add automatic task
 schedular.add_job(id='webScrapeAuto', func=runAutomaticWebScrape,
                   trigger='interval', seconds=86400)
 
@@ -84,7 +94,7 @@ def getAllRatings():
                 "rating": stock["rating"]
             }
         )
-    return ratings.__str__()
+    return jsonify(ratings)
 
 
 @app.route("/api/ratings/<stockTicker>")

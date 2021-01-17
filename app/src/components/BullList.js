@@ -31,7 +31,10 @@ const BullList = ({ currentDashboard, setCurrentDashboard, ticker, setTicker }) 
             <div className="container mt-3">
                 <div className="list-group">
                     {data.slice(0, 10).map((stock, index) => (
-                        <button type="button " onClick={() => {setTicker(stock["ticker"]); setCurrentDashboard(1)}} className="list-group-item list-group-item-action">{index % 2 == 0? '🚀' : '📈'}{stock["ticker"]}</button>
+                        <button type="button " onClick={() => {setTicker(stock["ticker"]); setCurrentDashboard(1)}} className="list-group-item list-group-item-action">
+                            {index % 2 == 0? '🚀' : '📈'}
+                            <b>{stock["ticker"]}</b>:{stock["rating"].toString().slice(0,4)}
+                        </button>
                     ))}
                 </div>
             </div>

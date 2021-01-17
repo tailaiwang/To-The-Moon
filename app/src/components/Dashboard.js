@@ -19,7 +19,7 @@ const Dashboard = ({ currentDashboard,
         return(
             <div>
                 <BullList currentDashboard={currentDashboard} setCurrentDashboard = {setCurrentDashboard} setTicker = {setTicker} ticker = {ticker}/>
-                <PieChart />
+                <PieChart setTicker={setTicker} ticker= {ticker} currentDashboard = {currentDashboard} setCurrentDashboard = {setCurrentDashboard}/>
             </div>
 
         )

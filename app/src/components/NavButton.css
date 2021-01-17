@@ -20,3 +20,8 @@
 .nav-button-container:hover .nav-button-icon {
     color: #52B788;
 }
+
+.rocket {
+    color: black;
+    font-size: 10px;
+}

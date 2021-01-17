@@ -9,8 +9,6 @@ import Dashboard from "./components/Dashboard.js";
 import logo from "./assets/Swing.png";
 
 function App() {
-  // APP STATES
-
   // search and ticker states
   const [search, setSearch] = useState("Enter a ticker...");
   const [ticker, setTicker] = useState("");

@@ -22,7 +22,7 @@ const NavButton = ({ buttonIndex, rating, popularity, rocketships, yolos }) => {
         return (
             <div className="nav-button-container">
                 <div className="nav-button-text-2">
-                    # of <i class="fas fa-rocket"></i>
+                    # of <i className="fas fa-rocket"></i>
                 </div>
                 <div className="nav-button-text-0">{rocketships}</div>
             </div>

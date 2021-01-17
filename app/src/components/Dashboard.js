@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // css
 import "./Dashboard.css";
@@ -15,6 +15,33 @@ const Dashboard = ({
     setTicker,
     ticker,
 }) => {
+    const [rating, setRating] = useState(0);
+    const [popularity, setPopularity] = useState(0);
+    const [rocketships, setRocketships] = useState(0);
+    const [yolos, setYolos] = useState(0);
+    const [comments, setComments] = useState("");
+
+    const getDataReq = {
+        method: "GET",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
+        },
+    };
+
+    useEffect(() => {
+        console.log(ticker);
+        fetch(`/api/ratings/${ticker}`, getDataReq)
+            .then((results) => results.json())
+            .then((data) => {
+                setRating(data.rating);
+                setPopularity(data.score);
+                setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
+                setYolos((data.flairs.match(/YOLO/g)).length);
+                setComments(data.comments);
+            });
+    }, [ticker]);
+
     if (currentDashboard === 0) { // main dashboard
         return (
             <div>

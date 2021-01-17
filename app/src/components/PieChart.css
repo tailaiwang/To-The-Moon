@@ -13,6 +13,10 @@
 
 .pie-title {
     color: black;
+
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .chart-div {

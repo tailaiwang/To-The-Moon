@@ -9,4 +9,8 @@
     background: solid;
     background-color: #EDF2F4;
     border-radius: 20px;
+
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
 }

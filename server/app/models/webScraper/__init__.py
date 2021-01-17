@@ -1,3 +1,0 @@
-
-
-from .webScrape import getResultsToJSON

@@ -9,7 +9,7 @@ import "./PieChart.css";
 const PieChart = ({ticker, setTicker, currentDashboard, setCurrentDashboard}) => {
 
     const [data, setData] = useState(null);
-    const [options, setOptions] = useState(null);
+    // const [options, setOptions] = useState(null);
 
     const getDataReq = {
         method: "GET",
@@ -47,17 +47,20 @@ const PieChart = ({ticker, setTicker, currentDashboard, setCurrentDashboard}) =>
                     
                 })
 
-                setOptions({
+                // setOptions({
                     
-                    onClick: (evt, item) => {
-                        if(item){
+                //     onClick: (evt, item) => {
 
-                            setTicker(labels[item[0]._index])
-                            setCurrentDashboard(1)
-                        }
+                //         console.log(item)
+
+                //         if(item.length){
+
+                //             setTicker(labels[item[0]._index])
+                //             setCurrentDashboard(1)
+                //         }
                         
-                    },
-                })
+                //     },
+                // })
             });
     }, []);
 
@@ -72,7 +75,7 @@ const PieChart = ({ticker, setTicker, currentDashboard, setCurrentDashboard}) =>
             </h2>
 
             <div className="chart-div">
-                {!data? "Loading.." : <Doughnut data={data} options={options} />}
+                {!data? "Loading.." : <Doughnut data={data}  />}
             </div>
 
 

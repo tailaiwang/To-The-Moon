@@ -35,7 +35,7 @@ const Dashboard = ({
             console.log(ticker);
             fetch(`/api/ratings/${ticker}`, getDataReq)
                 .then((results) => {
-                    console.log(results)
+                  
                     return results.json()
                 })
                 .then((data) => {

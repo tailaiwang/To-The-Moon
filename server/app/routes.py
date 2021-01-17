@@ -103,5 +103,5 @@ def getRatingDetail(stockTicker):
     r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
     data = r.json()
     if list(filter(lambda stock: stock["ticker"] == stockTicker, data)):
-        return jsonify(list(filter(lambda stock: stock["ticker"] == stockTicker, data))[0].__str__())
+        return jsonify(list(filter(lambda stock: stock["ticker"] == stockTicker, data))[0])
     return "Stock not found", 400

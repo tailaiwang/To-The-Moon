@@ -12,12 +12,13 @@ import Comments from './Comments.js';
 
 const Dashboard = ({ currentDashboard, 
     setCurrentDashboard, 
+    setTicker,
     ticker }) => {
 
     if (currentDashboard === 0) {
         return(
             <div>
-                <BullList />
+                <BullList currentDashboard={currentDashboard} setCurrentDashboard = {setCurrentDashboard} setTicker = {setTicker} ticker = {ticker}/>
                 <PieChart />
             </div>
 

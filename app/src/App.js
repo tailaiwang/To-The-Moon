@@ -42,6 +42,7 @@ function App() {
           currentDashboard={currentDashboard}
           setCurrentDashboard={setCurrentDashboard}
           ticker={ticker}
+          setTicker={setTicker}
         />
 
       </div>

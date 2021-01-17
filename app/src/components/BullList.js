@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 // css
 import './BullList.css';
 
-const BullList = () => {
+const BullList = ({ currentDashboard, setCurrentDashboard, ticker, setTicker }) => {
 
-    const [ data, setData ] = useState(null);
+    const [data, setData] = useState(null);
 
     const getDataReq = {
         method: "GET",
@@ -25,15 +25,28 @@ const BullList = () => {
             });
     }, []);
 
-    return(
+    const displayTopStocks = () => {
+        return (
+            <div className="container mt-3">
+                <div className="list-group">
+                    {data.slice(0, 10).map((stock, index) => (
+                        <button type="button " onClick={() => {setTicker(stock); setCurrentDashboard(1)}} className="list-group-item list-group-item-action">{index % 2 == 0? '🚀' : '📈'}{stock}</button>
+                    ))}
+                </div>
+            </div>
+
+        );
+    }
+
+    return (
         <>
             <div className="bull-list-container">
-                <p>
+                <h2 className = "mt-3">
                     List of Top Bullish Stocks based on Market Sentiment Analysis
-                </p>
-                <p>
-                    Data: {!data ? 'Loading...' : `${data}`}
-                </p>
+                </h2>
+            
+                   {!data ? 'Loading...' : displayTopStocks()}
+                
             </div>
         </>
     );

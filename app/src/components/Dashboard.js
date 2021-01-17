@@ -26,6 +26,7 @@ const Dashboard = ({
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": true,
+            
         },
     };
 
@@ -33,14 +34,17 @@ const Dashboard = ({
         if (ticker) {
             console.log(ticker);
             fetch(`/api/ratings/${ticker}`, getDataReq)
-                .then((results) => results.json())
+                .then((results) => {
+                    console.log(results)
+                    return results.json()
+                })
                 .then((data) => {
                     console.log(data);
-                    // setRating(data.rating);
-                    // setPopularity(data.score);
-                    // setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
-                    // setYolos((data.flairs.match(/YOLO/g)).length);
-                    // setComments(data.comments);
+                    setRating(data.rating);
+                    setPopularity(data.score);
+                    setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
+                    setYolos((data.flairs.match(/YOLO/g)).length);
+                    setComments(data.comments);
                 });
         }
     }, [ticker]);

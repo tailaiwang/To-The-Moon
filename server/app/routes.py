@@ -74,7 +74,7 @@ def calcRating(title, description, score, comments, flairs, awards, count):
   totalSenti = 3 * titleSenti + 2 * descSenti + commentsSenti
 
   # find the number of rocket ships inside the comments, title, desc
-  # rocketShipCount = 0.10 * len(re.findall(ru'🚀', title + description + comments))
+  rocketShipCount = 0.10 * len(re.findall(ru'🚀', title + description + comments))
   # finds the number of YOLOs, each YOLO is +5
   yoloCount = flairs.count("YOLO")
 
@@ -84,29 +84,28 @@ def calcRating(title, description, score, comments, flairs, awards, count):
 @app.route("/ratings")
 def getAllRatings():
   ratings= []
-  #replace with API call later
-  script_dir = os.path.dirname(__file__)
-  full_path = os.path.join(script_dir, 'jobs/webScraper/poggedResults.json')
-  with open(full_path) as f:
-    data = json.load(f)
-    for stock in data:
-      ratings.append(
-        {
-          "ticker": stock["ticker"],
-        }
-      )
+  
+  headers = { 'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
+  r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
+  data = r.json()
+  
+
+  for stock in data:
+    ratings.append(
+      {
+        "ticker": stock["ticker"],
+      }
+    )
   return ratings.__str__()
     
 
 @app.route("/ratings/<stockTicker>")
 def getRatingDetail(stockTicker):
-  #replace with API call later
-  script_dir = os.path.dirname(__file__)
-  full_path = os.path.join(script_dir, 'jobs/webScraper/poggedResults.json')
-  with open(full_path) as f:
-    data = json.load(f)
-    if filter(lambda stock : stock["ticker"] == stockTicker, data):
-      return list(filter(lambda stock : stock["ticker"] == stockTicker, data))[0].__str__()
+  headers = { 'Authorization': os.environ.get('DATABASE_ACCESS_KEY')}
+  r = requests.get(os.environ.get('DATABASE_REST_API'), headers=headers)
+  data = r.json()
+  if filter(lambda stock : stock["ticker"] == stockTicker, data):
+    return list(filter(lambda stock : stock["ticker"] == stockTicker, data))[0].__str__()
   return "Stock not found", 400
 
 

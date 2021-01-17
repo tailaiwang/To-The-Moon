@@ -29,7 +29,7 @@ const Search = ({ logo, search, setSearch, ticker, setTicker, currentDashboard, 
             <div className="logo" onClick={dashboardHandler}>
                 {/* <img className="logo-img" src={logo} alt=""/> */}
                 <i className="fas fa-chart-line logo-img"></i>
-                <div className="title">Swing Sentiment</div>
+                <div className="title">To The Moon 🚀</div>
             </div>
 
 

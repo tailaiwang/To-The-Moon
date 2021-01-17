@@ -42,7 +42,7 @@ const BullList = ({ currentDashboard, setCurrentDashboard, ticker, setTicker }) 
         <>
             <div className="bull-list-container">
                 <h2 className = "mt-3">
-                    List of Top Bullish Stocks based on Market Sentiment Analysis
+                  🚀Top Bullish Stocks based on Market Sentiment Analysis🚀
                 </h2>
             
                    {!data ? 'Loading...' : displayTopStocks()}

@@ -25,7 +25,7 @@ const PieChart = () => {
     return(
         <div className="pie-chart-container">
             <div className="pie-title">
-                WallStreetBets' Top Stocks
+            🚀 WallStreetBets' Top Stocks 🚀
             </div>
 
             <div className="chart-div">

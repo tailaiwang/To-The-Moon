@@ -29,7 +29,7 @@ const BullList = () => {
         <>
             <div className="bull-list-container">
                 <p>
-                    List of Top Bullish Stocks based on Market Sentiment Analysis
+                🚀Top Bullish Stocks based on Market Sentiment Analysis🚀
                 </p>
                 <p>
                     Data: {!data ? 'Loading...' : `${data}`}

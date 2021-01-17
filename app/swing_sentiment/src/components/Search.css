@@ -10,18 +10,42 @@
 
 .logo {
     position: absolute;
-    height: 200px;
+    left: 4.5%;
+    top: 5%;
+    height: 120px;
     width: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo:hover .logo-img {
+    color: #52B788;
+}
+
+.logo:hover .title {
+    color: #52B788;
 }
 
 .logo-img {
-    position: absolute;
-    top: -25%;
-    left: 20%;
-    
-    height: 250px;
-    width: auto;
+    font-size: 100px;
+    color: #EDF2F4;
 }
+
+.title {
+    font-size: 30px;
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+    color: #EDF2F4;
+    margin-top: 30px;
+}
+
+/* .logo-img:hover {
+    color: #52B788;
+}
+
+.title:hover {
+    color: #52B788;
+} */
 
 
 
@@ -29,7 +53,7 @@ textarea, input { outline: none; }
 
 .search-input {
     position: absolute;
-    top: 27%;
+    top: 25%;
     left: 33%;
 
     width: 700px;

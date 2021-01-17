@@ -3,8 +3,7 @@ import './App.css';
 
 // import components
 import Search from './components/Search.js';
-import SideNav from './components/SideNav.js';
-import Chart from './components/Chart.js';
+import Dashboard from './components/Dashboard.js';
 
 // import assets
 import logo from './assets/Swing.png';
@@ -12,10 +11,14 @@ import logo from './assets/Swing.png';
 
 
 function App() {
-  // app states
-  // states
+  // APP STATES
+
+  // search and ticker states
   const [search, setSearch] = useState("Enter a ticker...");
   const [ticker, setTicker] = useState("");
+
+  // nav control states
+  const [currentDashboard, setCurrentDashboard] = useState(0);
 
 
   return (
@@ -28,16 +31,16 @@ function App() {
           setSearch={setSearch}
           ticker={ticker}
           setTicker={setTicker}
+          currentDashboard={currentDashboard}
+          setCurrentDashboard={setCurrentDashboard}
         />
       </header>
 
       <div className="page-container">
 
-        <SideNav
-
-        />
-
-        <Chart
+        <Dashboard 
+          currentDashboard={currentDashboard}
+          setCurrentDashboard={setCurrentDashboard}
           ticker={ticker}
         />
 

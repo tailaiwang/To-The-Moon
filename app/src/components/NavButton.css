@@ -1,0 +1,29 @@
+.nav-button-container {
+    height: 125px;
+    width: 125px;
+    border: solid;
+    border-color: #2B2D42;
+    border-radius: 100%;
+
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+.nav-button-icon {
+    margin-top:  35px;
+
+    font-size: 60px;
+    color: #2B2D42;
+}
+
+.nav-button-container:hover {
+    border-color: #52B788;
+}
+
+.nav-button-container:hover .nav-button-icon {
+    color: #52B788;
+}
+
+.rocket {
+    color: black;
+    font-size: 10px;
+}

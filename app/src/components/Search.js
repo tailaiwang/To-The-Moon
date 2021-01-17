@@ -4,7 +4,11 @@ import React from 'react';
 // css
 import './Search.css';
 
-const Search = ({ logo, search, setSearch, ticker, setTicker }) => {
+const Search = ({ logo, search, setSearch, ticker, setTicker, currentDashboard, setCurrentDashboard }) => {
+
+    const dashboardHandler = (e) => {
+        setCurrentDashboard(0);
+    }
 
     const clickHandler = (e) => {
         setSearch("");
@@ -14,20 +18,18 @@ const Search = ({ logo, search, setSearch, ticker, setTicker }) => {
         setSearch(e.target.value);
     }
 
-    // const submitSearchHandler = (e) => {
-    //     e.preventDefault();
-    //     setSearch("");
-    // }
-
     const submitHandler = (e) => {
+        setCurrentDashboard(1);
         setTicker(search);
         e.preventDefault();
     }
 
     return(
         <div className="nav-div">
-            <div className="logo">
-                <img className="logo-img" src={logo} alt=""/>
+            <div className="logo" onClick={dashboardHandler}>
+                {/* <img className="logo-img" src={logo} alt=""/> */}
+                <i className="fas fa-chart-line logo-img"></i>
+                <div className="title">Swing Sentiment</div>
             </div>
 
 
@@ -44,17 +46,8 @@ const Search = ({ logo, search, setSearch, ticker, setTicker }) => {
                 </button>
             </form>
 
-
-            {/* <div className="search-bar">
-                <div className="search-text">
-                    Hello Fuckers
-                </div>
-            </div> */}
         </div>
-    )
+    );
 }
 
 export default Search;
-
-//onClick={clickHandler} input
-//onClick={submitSearchHandler} button

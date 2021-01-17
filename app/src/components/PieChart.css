@@ -1,0 +1,24 @@
+.pie-chart-container {
+    position: absolute;
+    top: 20%;
+    left: 53.5%;
+
+    height: 700px;
+    width: 800px;
+
+    background: solid;
+    background-color: #EDF2F4;
+    border-radius: 20px;
+}
+
+.pie-title {
+    color: black;
+
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chart-div {
+    margin-top: 50px;
+}

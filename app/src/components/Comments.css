@@ -1,4 +1,4 @@
-.chart-container {
+.comments-container {
     position: absolute;
     top: 20%;
     left: 27%;
@@ -9,4 +9,5 @@
 
     background: solid;
     background-color: #EDF2F4;
+
 }

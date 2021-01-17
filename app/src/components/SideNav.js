@@ -3,10 +3,38 @@ import React from 'react';
 // css
 import './SideNav.css'
 
-const SideNav = () => {
+// components
+import NavButton from './NavButton';
+
+const SideNav = ({ currentDashboard, setCurrentDashboard }) => {
     return(
         <div className="nav-container">
-            this is a nav / controls?
+            <div className="nav-list">
+                <div>
+                    <NavButton 
+                        buttonIndex={0}
+                        
+                    />
+                </div>
+                <div>
+                    <NavButton 
+                        buttonIndex={1}
+
+                    />
+                </div>
+                <div>
+                    <NavButton 
+                        buttonIndex={2}
+
+                    />
+                </div>
+                <div>
+                    <NavButton 
+                        buttonIndex={3}
+
+                    />
+                </div>
+            </div>
         </div>
     );
 }

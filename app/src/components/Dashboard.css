@@ -1,0 +1,16 @@
+.current-ticker {
+    position: absolute;
+    top: 3.5%;
+    left: 85%;
+
+    height: 50px;
+    width: 200px;
+
+    background: solid;
+    background-color: #EDF2F4;
+    border-radius: 10px;
+}
+
+.current-ticker-text {
+    font-family: 'Roboto Mono', sans-serif;
+}

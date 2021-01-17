@@ -5,9 +5,8 @@ import React from 'react';
 // css
 import './Comments.css';
 
-
 const Comments = () => {
-    return(
+    return (
         <div className="comments-container">
             this is where the comments go
         </div>

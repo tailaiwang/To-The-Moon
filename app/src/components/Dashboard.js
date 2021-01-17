@@ -1,34 +1,35 @@
-import React from 'react';
+import React from "react";
 
 // css
-import './Dashboard.css'
+import "./Dashboard.css";
 
 // components
-import SideNav from './SideNav.js';
-import Chart from './Chart.js';
-import BullList from './BullList.js';
-import PieChart from './PieChart.js';
-import Comments from './Comments.js';
+import SideNav from "./SideNav.js";
+import BullList from "./BullList.js";
+import PieChart from "./PieChart.js";
+import Comments from "./Comments.js";
 
-const Dashboard = ({ currentDashboard, 
-    setCurrentDashboard, 
+const Dashboard = ({
+    currentDashboard,
+    setCurrentDashboard,
     setTicker,
-    ticker }) => {
-
+    ticker,
+}) => {
     if (currentDashboard === 0) {
-        return(
+        return (
             <div>
-                <BullList currentDashboard={currentDashboard} setCurrentDashboard = {setCurrentDashboard} setTicker = {setTicker} ticker = {ticker}/>
+                <BullList
+                    currentDashboard={currentDashboard}
+                    setCurrentDashboard={setCurrentDashboard}
+                    setTicker={setTicker}
+                    ticker={ticker}
+                />
                 <PieChart />
             </div>
-
-        )
-    }
-
-    else if (currentDashboard === 1) {
-        return(
+        );
+    } else if (currentDashboard === 1) {
+        return (
             <div>
-
                 <div className="current-ticker">
                     <div className="current-ticker-text">
                         Current Ticker: <br></br>
@@ -39,13 +40,10 @@ const Dashboard = ({ currentDashboard,
                     currentDashboard={currentDashboard}
                     setCurrentDashboard={setCurrentDashboard}
                 />
-
-                <Comments
-
-                />
+                <Comments />
             </div>
         );
     }
-}
+};
 
 export default Dashboard;

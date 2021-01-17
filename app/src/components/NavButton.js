@@ -9,17 +9,17 @@ const NavButton = ({ buttonIndex,
 
 
 
-    if (buttonIndex == 0) {
+    if (buttonIndex === 0) {
         return(
             <div className="nav-button-container">
                 <i class="fas fa-chart-bar nav-button-icon"></i>
             </div>
         );
     }
-    else if (buttonIndex == 1) {
+    else if (buttonIndex === 1) {
         return null;
     }
-    else if (buttonIndex == 2) {
+    else if (buttonIndex === 2) {
         return null;
     }
     else {

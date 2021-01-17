@@ -13,17 +13,21 @@
 
 .nav-list {
     position: absolute;
-    left: 17%;
+    left: 22%;
 }
 
 .nav-list div:nth-child(1) {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .nav-list div:nth-child(2) {
-    margin-top: 60px;
+    margin-top: 45px;
 }
 
 .nav-list div:nth-child(3) {
-    margin-top: 60px;
+    margin-top: 45px;
+}
+
+.nav-list div:nth-child(4) {
+    margin-top: 45px;
 }

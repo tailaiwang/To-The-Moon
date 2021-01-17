@@ -1,13 +1,13 @@
 .nav-button-container {
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     border: solid;
     border-color: #2B2D42;
     border-radius: 100%;
 }
 
 .nav-button-icon {
-    margin-top:  44px;
+    margin-top:  35px;
 
     font-size: 60px;
     color: #2B2D42;

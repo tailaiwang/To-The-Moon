@@ -34,6 +34,14 @@ const SideNav = ({ currentDashboard, setCurrentDashboard }) => {
 
                     />
                 </div>
+                <div>
+                    <NavButton 
+                        buttonIndex={0}
+                        currentDashboard={currentDashboard}
+                        setCurrentDashboard={setCurrentDashboard}
+
+                    />
+                </div>
             </div>
         </div>
     );

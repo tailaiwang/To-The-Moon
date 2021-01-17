@@ -30,23 +30,26 @@ const Dashboard = ({
     };
 
     useEffect(() => {
-        console.log(ticker);
-        fetch(`/api/ratings/${ticker}`, getDataReq)
-            .then((results) => results.json())
-            .then((data) => {
-                setRating(data.rating);
-                setPopularity(data.score);
-                setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
-                setYolos((data.flairs.match(/YOLO/g)).length);
-                setComments(data.comments);
-            });
+        if (ticker) {
+            console.log(ticker);
+            fetch(`/api/ratings/${ticker}`, getDataReq)
+                .then((results) => results.json())
+                .then((data) => {
+                    console.log(data);
+                    // setRating(data.rating);
+                    // setPopularity(data.score);
+                    // setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
+                    // setYolos((data.flairs.match(/YOLO/g)).length);
+                    // setComments(data.comments);
+                });
+        }
     }, [ticker]);
 
     if (currentDashboard === 0) { // main dashboard
         return (
             <div>
-                <BullList currentDashboard={currentDashboard} setCurrentDashboard = {setCurrentDashboard} setTicker = {setTicker} ticker = {ticker}/>
-                <PieChart setTicker={setTicker} ticker= {ticker} currentDashboard = {currentDashboard} setCurrentDashboard = {setCurrentDashboard}/>
+                <BullList currentDashboard={currentDashboard} setCurrentDashboard={setCurrentDashboard} setTicker={setTicker} ticker={ticker} />
+                <PieChart setTicker={setTicker} ticker={ticker} currentDashboard={currentDashboard} setCurrentDashboard={setCurrentDashboard} />
             </div>
         );
     } else if (currentDashboard === 1) { // individual ticker

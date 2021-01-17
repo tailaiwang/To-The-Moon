@@ -8,14 +8,14 @@ const NavButton = ({ buttonIndex, rating, popularity, rocketships, yolos }) => {
         return (
             <div className="nav-button-container">
                 <div className="nav-button-text-0">Rating</div>
-                <div className="nav-button-text-0">{rating}</div>
+                <strong>{rating.toFixed(2)}</strong>
             </div>
         );
     } else if (buttonIndex === 1) {
         return (
             <div className="nav-button-container">
                 <div className="nav-button-text-1">Popularity</div>
-                <div className="nav-button-text-0">{popularity}</div>
+                <strong>{popularity}</strong>
             </div>
         );
     } else if (buttonIndex === 2) {
@@ -24,14 +24,14 @@ const NavButton = ({ buttonIndex, rating, popularity, rocketships, yolos }) => {
                 <div className="nav-button-text-2">
                     # of <i className="fas fa-rocket"></i>
                 </div>
-                <div className="nav-button-text-0">{rocketships}</div>
+                <strong>{rocketships}</strong>
             </div>
         );
     } else if (buttonIndex === 3) {
         return (
             <div className="nav-button-container">
                 <div className="nav-button-text-3"># of YOLO's</div>
-                <div className="nav-button-text-0">{yolos}</div>
+                <strong>{yolos}</strong>
             </div>
         );
     } else {

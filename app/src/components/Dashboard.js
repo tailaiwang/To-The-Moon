@@ -26,7 +26,7 @@ const Dashboard = ({
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": true,
-            
+
         },
     };
 
@@ -39,11 +39,14 @@ const Dashboard = ({
                     return results.json()
                 })
                 .then((data) => {
+                    if (data.description === undefined) {
+                        data.description = "";
+                    }
                     console.log(data);
                     setRating(data.rating);
                     setPopularity(data.score);
-                    setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
-                    setYolos((data.flairs.match(/YOLO/g)).length);
+                    setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g || []).length);
+                    setYolos((data.flairs.match(/YOLO/g) || []).length);
                     setComments(data.comments);
                 });
         }

@@ -1,10 +1,11 @@
 .comments-container {
+    overflow-y: auto;
     position: absolute;
     top: 20%;
     left: 27%;
 
     height: 700px;
-    width: 1300px;
+    width: 70%;
     border-radius: 15px;
 
     background: solid;

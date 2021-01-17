@@ -1,34 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
 // css
-import './Dashboard.css'
+import "./Dashboard.css";
 
 // components
-import SideNav from './SideNav.js';
-import Chart from './Chart.js';
-import BullList from './BullList.js';
-import PieChart from './PieChart.js';
-import Comments from './Comments.js';
+import SideNav from "./SideNav.js";
+import BullList from "./BullList.js";
+import PieChart from "./PieChart.js";
+import Comments from "./Comments.js";
 
-const Dashboard = ({ currentDashboard, 
-    setCurrentDashboard, 
+const Dashboard = ({
+    currentDashboard,
+    setCurrentDashboard,
     setTicker,
-    ticker }) => {
+    ticker,
+}) => {
+    const [rating, setRating] = useState(0);
+    const [popularity, setPopularity] = useState(0);
+    const [rocketships, setRocketships] = useState(0);
+    const [yolos, setYolos] = useState(0);
+    const [comments, setComments] = useState("");
 
-    if (currentDashboard === 0) {
-        return(
+    const getDataReq = {
+        method: "GET",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
+        },
+    };
+
+    useEffect(() => {
+        console.log(ticker);
+        fetch(`/api/ratings/${ticker}`, getDataReq)
+            .then((results) => results.json())
+            .then((data) => {
+                setRating(data.rating);
+                setPopularity(data.score);
+                setRocketships(data.title.concat(data.description).concat(data.comments).match(/🚀/g).length);
+                setYolos((data.flairs.match(/YOLO/g)).length);
+                setComments(data.comments);
+            });
+    }, [ticker]);
+
+    if (currentDashboard === 0) { // main dashboard
+        return (
             <div>
                 <BullList currentDashboard={currentDashboard} setCurrentDashboard = {setCurrentDashboard} setTicker = {setTicker} ticker = {ticker}/>
                 <PieChart setTicker={setTicker} ticker= {ticker} currentDashboard = {currentDashboard} setCurrentDashboard = {setCurrentDashboard}/>
             </div>
-
-        )
-    }
-
-    else if (currentDashboard === 1) {
-        return(
+        );
+    } else if (currentDashboard === 1) { // individual ticker
+        return (
             <div>
-
                 <div className="current-ticker">
                     <div className="current-ticker-text">
                         Current Ticker: <br></br>
@@ -36,16 +59,17 @@ const Dashboard = ({ currentDashboard,
                     </div>
                 </div>
                 <SideNav
-                    currentDashboard={currentDashboard}
-                    setCurrentDashboard={setCurrentDashboard}
+                    rating={rating}
+                    popularity={popularity}
+                    rocketships={rocketships}
+                    yolos={yolos}
                 />
-
                 <Comments
-
+                    comments={comments}
                 />
             </div>
         );
     }
-}
+};
 
 export default Dashboard;

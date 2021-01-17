@@ -1,42 +1,54 @@
-import React from 'react';
+import React from "react";
 
 // css
-import './SideNav.css'
+import "./SideNav.css";
 
 // components
-import NavButton from './NavButton';
+import NavButton from "./NavButton";
 
-const SideNav = ({ currentDashboard, setCurrentDashboard }) => {
-    return(
+const SideNav = ({ rating, popularity, rocketships, yolos }) => {
+    return (
         <div className="nav-container">
             <div className="nav-list">
                 <div>
-                    <NavButton 
+                    <NavButton
                         buttonIndex={0}
-                        
+                        rating={rating}
+                        popularity={popularity}
+                        rocketships={rocketships}
+                        yolos={yolos}
                     />
                 </div>
                 <div>
-                    <NavButton 
+                    <NavButton
                         buttonIndex={1}
-
+                        rating={rating}
+                        popularity={popularity}
+                        rocketships={rocketships}
+                        yolos={yolos}
                     />
                 </div>
                 <div>
-                    <NavButton 
+                    <NavButton
                         buttonIndex={2}
-
+                        rating={rating}
+                        popularity={popularity}
+                        rocketships={rocketships}
+                        yolos={yolos}
                     />
                 </div>
                 <div>
-                    <NavButton 
+                    <NavButton
                         buttonIndex={3}
-
+                        rating={rating}
+                        popularity={popularity}
+                        rocketships={rocketships}
+                        yolos={yolos}
                     />
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default SideNav;

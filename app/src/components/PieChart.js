@@ -1,10 +1,10 @@
 import React , { useState, useEffect }from 'react';
 
 // import chart component
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut } from "react-chartjs-2";
 
 // css
-import './PieChart.css';
+import "./PieChart.css";
 
 const PieChart = ({ticker, setTicker, currentDashboard, setCurrentDashboard}) => {
 
@@ -78,6 +78,6 @@ const PieChart = ({ticker, setTicker, currentDashboard, setCurrentDashboard}) =>
 
         </div>
     );
-}
+};
 
 export default PieChart;

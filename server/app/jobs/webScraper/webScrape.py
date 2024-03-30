@@ -39,10 +39,10 @@ def webScrapeToJSONAndPush():
     print("Connecting to Reddit API...")
 
     reddit = praw.Reddit(client_id='Yx811ChQuzwdCg',
-                         client_secret='KPTiWELMRKl89hW85LY_l89qpchG7A',
+                         client_secret='INSERT_SECRET',
                          user_agent='webScrapeReddit',
-                         username='bill_cui57',
-                         password='Happytime1')
+                         username='INSERT_USERNAME',
+                         password='INSERT_PASSWORD')
 
     print("Connected!")
     print("Loading set of valid tickers from CSV...")
